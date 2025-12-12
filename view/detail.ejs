@@ -1,0 +1,20 @@
+
+
+<section class="detail-section">
+  <div class="detail-card">
+    <img src="<%= cake.imageUrl %>" alt="<%= cake.title %>">
+    <div class="detail-content">
+      <h2><%= cake.title %></h2>
+      <p class="price"><%= cake.price.toLocaleString() %>đ</p>
+      <p><%= cake.description %></p>
+
+      <h4>Recipe</h4>
+      <pre class="recipe"><%= cake.recipe %></pre>
+
+      <div class="detail-actions">
+        <button class="add-cart" data-cakeid="<%= cake.id %>">Add to Cart</button>
+        <a href="/" class="hero-btn tiny">Back</a>
+      </div>
+    </div>
+  </div>
+</section>

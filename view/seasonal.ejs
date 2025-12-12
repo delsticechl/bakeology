@@ -1,0 +1,31 @@
+<section class="cakes-section fade-in">
+    <h2>🎄 Christmas Special Cakes</h2>
+    <p>Celebrate the season with our festive cakes!</p>
+  
+    <div class="cake-list">
+  
+      <% if (seasonalCakes.length === 0) { %>
+        <p>No seasonal cakes available right now.</p>
+      <% } %>
+  
+      <% seasonalCakes.forEach(cake => { %>
+        <div class="cake-card">
+          <img src="<%= cake.imageUrl %>" alt="<%= cake.title %>">
+  
+          <h3><%= cake.title %></h3>
+          <p><%= cake.description %></p>
+  
+          <div class="price"><%= cake.price.toLocaleString() %>đ</div>
+  
+          <div class="card-buttons">
+            <a href="/cakes/<%= cake.id %>" class="detail-btn">Details</a>
+  
+            <button class="add-cart" data-cakeid="<%= cake.id %>">
+              Add
+            </button>
+          </div>
+        </div>
+      <% }) %>
+  
+    </div>
+  </section>

@@ -1,0 +1,28 @@
+
+
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Welcome to Bakeology</h1>
+    <p>Where every bite tastes like happiness ✨</p>
+    <a href="#cakes"><button class="hero-btn">Shop Now</button></a>
+  </div>
+</section>
+
+<section id="cakes" class="cakes-section">
+  <h2>Our Signature Cakes</h2>
+  <div class="cake-list">
+    <% cakes.forEach(cake => { %>
+      <div class="cake-card">
+        <img src="<%= cake.imageUrl %>" alt="<%= cake.title %>">
+        <h3><%= cake.title %></h3>
+        <p><%= cake.description %></p>
+        <div class="price"><%= cake.price.toLocaleString() %>đ</div>
+        <div class="card-buttons">
+          <a class="detail-btn" href="/cakes/<%= cake.id %>">Details</a>
+          <button class="add-cart" data-cakeid="<%= cake.id %>">Add</button>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</section>

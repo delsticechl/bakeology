@@ -1,0 +1,51 @@
+<section class="checkout-section fade-in">
+    <div class="checkout-container">
+  
+      <h2 class="checkout-title">🛒 Checkout</h2>
+      <p class="checkout-subtitle">Review your order and enter your delivery details</p>
+  
+      <!-- LEFT: Order Summary -->
+      <div class="checkout-grid">
+  
+        <div class="checkout-box">
+          <h3>Order Summary</h3>
+  
+          <ul class="checkout-list">
+            <% cart.CartItems.forEach(item => { %>
+              <li class="checkout-item">
+                <div>
+                  <strong><%= item.Cake.title %></strong>
+                  <span class="qty">× <%= item.quantity %></span>
+                </div>
+                <span class="price"><%= (item.Cake.price * item.quantity).toLocaleString() %>đ</span>
+              </li>
+            <% }) %>
+          </ul>
+  
+          <div class="checkout-total">
+            <span>Total</span>
+            <strong><%= cart.CartItems.reduce((sum, i) => sum + i.Cake.price * i.quantity, 0).toLocaleString() %>đ</strong>
+          </div>
+        </div>
+  
+        <!-- RIGHT: Delivery Form -->
+        <div class="checkout-box">
+          <h3>Delivery Information</h3>
+  
+          <form action="/checkout" method="POST" class="checkout-form">
+            <label>Name</label>
+            <input type="text" name="name" required>
+  
+            <label>Address</label>
+            <input type="text" name="address" required>
+  
+            <label>Phone</label>
+            <input type="text" name="phone" required>
+  
+            <button type="submit" class="checkout-btn">Place Order</button>
+          </form>
+        </div>
+  
+      </div>
+    </div>
+  </section>

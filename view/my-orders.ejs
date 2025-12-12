@@ -1,0 +1,44 @@
+<section class="orders-section fade-in">
+  <h2 class="orders-title">📦 My Orders</h2>
+
+  <% if (orders.length === 0) { %>
+    <p class="no-orders">You haven't placed any orders yet.</p>
+  <% } %>
+
+  <div class="orders-grid">
+    <% orders.forEach(order => { %>
+      <div class="order-card">
+
+        <div class="order-header">
+          <h3>Order #<%= order.id %></h3>
+          <span class="order-date"><%= order.createdAt.toLocaleString() %></span>
+        </div>
+
+        <!-- ✅ Customer Info -->
+        <div class="order-info">
+          <p><strong>Name:</strong> <%= order.name %></p>
+          <p><strong>Address:</strong> <%= order.address %></p>
+          <p><strong>Phone:</strong> <%= order.phone %></p>
+        </div>
+
+        <ul class="order-items">
+          <% order.OrderItems.forEach(item => { %>
+            <li class="order-item">
+              <div class="item-info">
+                <strong><%= item.Cake.title %></strong>
+                <span class="qty">× <%= item.quantity %></span>
+              </div>
+              <span class="price"><%= (item.price * item.quantity).toLocaleString() %>đ</span>
+            </li>
+          <% }) %>
+        </ul>
+
+        <div class="order-total">
+          <span>Total:</span>
+          <strong><%= order.totalPrice.toLocaleString() %>đ</strong>
+        </div>
+
+      </div>
+    <% }) %>
+  </div>
+</section>
