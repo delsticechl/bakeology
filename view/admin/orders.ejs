@@ -1,0 +1,25 @@
+<section class="admin-section fade-in">
+    <h2 class="admin-title">📦 All Orders</h2>
+  
+    <table class="admin-table">
+      <tr>
+        <th>ID</th>
+        <th>Customer</th>
+        <th>Total</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+  
+      <% orders.forEach(order => { %>
+        <tr>
+          <td><%= order.id %></td>
+          <td><%= order.name %></td>
+          <td><%= order.totalPrice.toLocaleString() %>đ</td>
+          <td><%= order.createdAt.toLocaleString() %></td>
+          <td>
+            <a href="/admin/orders/<%= order.id %>" class="edit-btn">View</a>
+          </td>
+        </tr>
+      <% }) %>
+    </table>
+  </section>
