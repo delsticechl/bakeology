@@ -1,7 +1,7 @@
 <section class="orders-section fade-in">
   <h2 class="orders-title">📦 My Orders</h2>
 
-  <% if (orders.length === 0) { %>
+  <% if (!orders || orders.length === 0) { %>
     <p class="no-orders">You haven't placed any orders yet.</p>
   <% } %>
 
@@ -25,10 +25,20 @@
           <% order.OrderItems.forEach(item => { %>
             <li class="order-item">
               <div class="item-info">
-                <strong><%= item.Cake.title %></strong>
+
+                <!-- ✅ Safe Cake Title -->
+                <% if (item.Cake) { %>
+                  <strong><%= item.Cake.title %></strong>
+                <% } else { %>
+                  <strong class="text-danger">[Cake deleted]</strong>
+                <% } %>
+
                 <span class="qty">× <%= item.quantity %></span>
               </div>
-              <span class="price"><%= (item.price * item.quantity).toLocaleString() %>đ</span>
+
+              <span class="price">
+                <%= (item.price * item.quantity).toLocaleString() %>đ
+              </span>
             </li>
           <% }) %>
         </ul>
