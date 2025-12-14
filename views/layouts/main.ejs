@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bakeology - <%= typeof title !== 'undefined' ? title : 'Home' %></title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+
+<body class="fade-in">
+  <nav class="navbar">
+    <div class="logo">Bakeology</div>
+
+    <ul class="nav-links">
+
+      <% if (currentUser && currentUser.isAdmin) { %>
+        <!-- ✅ Admin-only -->
+        <li><a href="/admin">Admin</a></li>
+      <% } %>
+
+      <li><a href="/" class="active">Home</a></li>
+
+      <li class="dropdown">
+        <a href="#">Menu ▼</a>
+        <ul class="dropdown-menu">
+          <li><a href="/seasonal" class="<%= req.path === '/seasonal' ? 'active' : '' %>">Seasonal Items</a></li>
+        </ul>
+      </li>
+
+      <% if (!currentUser || !currentUser.isAdmin) { %>
+        <!-- ✅ Only show for normal users -->
+        <li><a href="/my-orders">My Orders</a></li>
+        <li>
+          <a href="/cart">
+            Cart (<%= cartCount %>)
+          </a>
+        </li>
+      <% } %>
+
+    </ul>
+
+    <div class="auth-area">
+      <% if (currentUser) { %>
+        <span class="welcome">Hi, <%= currentUser.name || currentUser.email %></span>
+        <form action="/logout" method="post" style="display:inline">
+          <button class="link-btn" type="submit">Logout</button>
+        </form>
+      <% } else { %>
+        <a class="link-btn" href="/login">Login</a>
+        <a class="link-btn" href="/register">Register</a>
+      <% } %>
+    </div>
+  </nav>
+
+  <% if (success && success.length) { %>
+    <div class="flash flash-success"><%= success %></div>
+  <% } %>
+
+  <% if (error && error.length) { %>
+    <div class="flash flash-error"><%= error %></div>
+  <% } %>
+
+  <main>
+    <%- body %>
+  </main>
+
+  <footer class="footer">
+    <h3 class="footer-logo">Bakeology</h3>
+    <p>Made with ❤️ 2025 Bakeology</p>
+  </footer>
+
+  <script src="/scripts.js"></script>
+</body>
+</html>
