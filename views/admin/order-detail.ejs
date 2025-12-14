@@ -1,0 +1,55 @@
+<div class="admin-container">
+    <div class="order-detail-card">
+  
+      <!-- ✅ Header -->
+      <div class="order-header">
+        <h1 class="fw-bold mb-3">Order #<%= order.id %></h1>
+        <span class="order-date"><%= order.createdAt.toLocaleString() %></span>
+      </div>
+  
+      <!-- ✅ Customer Info -->
+      <div class="order-info">
+        <p><strong>Name:</strong> <%= order.name %></p>
+        <p><strong>Address:</strong> <%= order.address %></p>
+        <p><strong>Phone:</strong> <%= order.phone %></p>
+      </div>
+  
+      <!-- ✅ Items -->
+      <h3 class="mt-4">Items</h3>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Cake</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% order.OrderItems.forEach(item => { %>
+            <tr>
+              <td>
+                <% if (item.Cake) { %>
+                  <%= item.Cake.title %>
+                <% } else { %>
+                  <span class="text-danger">[Cake deleted]</span>
+                <% } %>
+              </td>
+              <td><%= item.quantity %></td>
+              <td><%= item.price.toLocaleString() %>đ</td>
+              <td><%= (item.price * item.quantity).toLocaleString() %>đ</td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+  
+      <!-- ✅ Total -->
+      <div class="order-total mt-4">
+        <span>Total:</span>
+        <strong><%= order.totalPrice.toLocaleString() %>đ</strong>
+      </div>
+  
+      <a href="/admin/orders" class="hero-btn tiny mt-3">Back</a>
+  
+    </div>
+  </div>

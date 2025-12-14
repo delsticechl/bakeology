@@ -1,0 +1,52 @@
+<div class="admin-container center-form">
+  <div class="admin-card wide-card">
+   
+<h1 class="fw-bold mb-4">✏️ Edit Cake</h1>
+
+<form action="/admin/cakes/<%= cake.id %>" method="POST" enctype="multipart/form-data" class="p-4 shadow rounded bg-white">
+
+  <!-- Name -->
+  <div class="mb-3">
+    <label class="form-label fw-semibold">Name</label>
+    <input name="title" class="form-control" value="<%= cake.title %>" required>
+  </div>
+
+  <!-- Description -->
+  <div class="mb-3">
+    <label class="form-label fw-semibold">Description</label>
+    <textarea name="description" class="form-control" rows="3" required><%= cake.description %></textarea>
+  </div>
+
+  <!-- Price -->
+  <div class="mb-3">
+    <label class="form-label fw-semibold">Price (VND)</label>
+    <input name="price" type="number" class="form-control" value="<%= cake.price %>" required>
+  </div>
+
+  <!-- Category -->
+  <div class="mb-3">
+    <label class="form-label fw-semibold">Category</label>
+    <input name="category" class="form-control" value="<%= cake.category %>">
+  </div>
+
+  <!-- Recipe -->
+  <div class="mb-3">
+    <label class="form-label fw-semibold">Recipe</label>
+    <textarea name="recipe" class="form-control" rows="6"><%= cake.recipe %></textarea>
+  </div>
+
+  <!-- Image -->
+  <div class="mb-3">
+    <label class="form-label fw-semibold">Cake Image</label>
+    <input type="file" name="image" class="form-control">
+
+    <div class="mt-3">
+      <p class="text-muted small mb-1">Current Image:</p>
+      <img src="<%= cake.imageUrl %>" class="rounded shadow-sm" style="width: 180px; height: 140px; object-fit: cover;">
+    </div>
+  </div>
+
+  <button class="btn btn-primary px-4">💾 Save Changes</button>
+</form>
+</div>
+</div>

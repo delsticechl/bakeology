@@ -1,0 +1,48 @@
+<div class="admin-container center-form">
+  <div class="admin-card wide-card">
+
+    <h1 class="fw-bold mb-4">➕ Add New Cake</h1>
+
+    <form action="/admin/cakes" method="POST" enctype="multipart/form-data">
+
+      <!-- Name -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Name</label>
+        <input name="title" class="form-control" required>
+      </div>
+
+      <!-- Description -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Description</label>
+        <textarea name="description" class="form-control" rows="3" required></textarea>
+      </div>
+
+      <!-- Price -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Price (VND)</label>
+        <input name="price" type="number" class="form-control" required>
+      </div>
+
+      <!-- Category -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Category</label>
+        <input name="category" class="form-control">
+      </div>
+
+      <!-- Recipe -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Recipe</label>
+        <textarea name="recipe" class="form-control" rows="6" placeholder="Write the recipe here..."></textarea>
+      </div>
+
+      <!-- Image -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Cake Image</label>
+        <input type="file" name="image" class="form-control">
+      </div>
+
+      <button class="btn-success px-4">✅ Add Cake</button>
+    </form>
+
+  </div>
+</div>

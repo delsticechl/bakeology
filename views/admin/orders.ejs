@@ -1,0 +1,31 @@
+<div class="admin-container">
+  <h1 class="fw-bold mb-4">Manage Orders</h1>
+
+  <table class="admin-table orders-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Total</th>
+        <th>Date</th>
+        <th>View</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% orders.forEach(order => { %>
+        <tr>
+          <td>#<%= order.id %></td>
+          <td><%= order.name %></td>
+          <td>
+            <%= order.OrderItems.reduce((sum, i) => sum + i.price * i.quantity, 0).toLocaleString() %>đ
+          </td>
+          <td><%= order.createdAt.toLocaleDateString() %></td>
+          <td>
+            <a href="/admin/orders/<%= order.id %>" class="btn-primary">View</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
