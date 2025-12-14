@@ -1398,4 +1398,67 @@ main {
   border-radius: 8px;
   font-weight: 600;
 }
+@media (max-width: 768px) {
+  .navbar {
+      padding: 15px 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+  }
+
+  .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+  }
+
+  .logo {
+      font-size: 26px;
+  }
+}
+@media (max-width: 768px) {
+  .hero-content h1 {
+      font-size: 40px;
+  }
+  .hero-content p {
+      font-size: 16px;
+  }
+  .hero-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .detail-card img {
+      max-width: 90%;
+  }
+}
+@media (max-width: 600px) {
+  .checkout-section {
+      padding: 30px 15px;
+  }
+}
+.admin-table,
+.orders-table,
+.cakes-table,
+.users-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+@media (max-width: 600px) {
+  section, .auth-section, .orders-section, .checkout-section {
+      padding: 40px 15px;
+  }
+}
+@media (max-width: 600px) {
+  .footer {
+      padding: 20px;
+  }
+}
+@media (max-width: 600px) {
+  button, .link-btn, .hero-btn {
+      width: 100%;
+  }
+}
   
